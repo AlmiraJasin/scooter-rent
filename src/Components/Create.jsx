@@ -1,12 +1,12 @@
-import rand from "../Utils/random";
+import randomRegCode from "../Utils/randomRegCode";
 
 let idCounter = 1; 
 export function CreateNewScooter () {
     const generateNewScooter = () => {
         console.log({id: idCounter,
-            registrationCode: rand(10000000, 99999999),
+            registrationCode: randomRegCode(),
             isBusy: 0,
-            lastUseTime: 'Just received!',
+            lastUseTime: new Date(),
             totalRideKilometres: 0}
         );
         idCounter++;
