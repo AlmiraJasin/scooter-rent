@@ -2,7 +2,8 @@ import randomRegCode from "../Utils/randomRegCode";
 import {insertData} from '../Utils/database';
 
 let idCounter = 1; 
-export function CreateNewScooter () {
+
+export function CreateNewScooter (props) {
     const generateNewScooter = () => {
         const newScooter = {id: idCounter,
             registrationCode: randomRegCode(),
@@ -11,6 +12,7 @@ export function CreateNewScooter () {
             totalRideKilometres: 0};
         idCounter++;
         insertData(newScooter);
+        props.refreshList(Date.now());
     }
     return (
         <div>

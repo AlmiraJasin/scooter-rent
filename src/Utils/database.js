@@ -4,5 +4,10 @@ export const insertData = (data) => {
 }
 
 export const readData = () => {
-    
+    return localStorage.getItem('scooters') ? [...JSON.parse(localStorage.getItem('scooters'))] : [];
+}
+
+export const deleteData = (id) => {
+    const scooterData = readData();
+    localStorage.setItem('scooters', JSON.stringify(scooterData.filter(scooter => scooter.id !== id)));
 }
