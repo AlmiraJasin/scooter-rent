@@ -15,3 +15,5 @@ function randomRegCode(codeLength = 8) {
 }
 
 export default randomRegCode;
+
+

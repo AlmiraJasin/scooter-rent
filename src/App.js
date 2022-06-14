@@ -24,7 +24,7 @@ function App() {
         <CreateNewScooter refreshList={setLastUpdate}/>
         <ScooterList refreshList={setLastUpdate} scooters={scooters} setShowModal={setShowModal} />
         <EditScooter refreshList={setLastUpdate} setShowModal={setShowModal} currentScooter={showModal} />
-        <ScootersStatistics />
+        <ScootersStatistics scooters={scooters} />
       </header>
     </div>
   );

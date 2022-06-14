@@ -6,6 +6,7 @@ export function ScooterList (props) {
     //console.log(props);
     return (
         <table>
+            <thead>
             <tr>
                 <th>{'ID'}</th>
                 <th>{'Registration Code'}</th>
@@ -14,6 +15,8 @@ export function ScooterList (props) {
                 <th>{'Run'}</th>
                 <th>{'Actions'}</th>
             </tr>
+            </thead>
+            <tbody>
             {props.scooters.map(scooter => {
                 return (
                     <tr key={scooter.id}>
@@ -32,6 +35,7 @@ export function ScooterList (props) {
                         </td>
                     </tr>)})
             }
+            </tbody>
         </table>
     );
 }

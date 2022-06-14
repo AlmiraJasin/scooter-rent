@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { editData } from "../Utils/database";
+import { getLocalDate } from "../Utils/dateTime";
 
 export function EditScooter (props) {
 
@@ -25,6 +26,7 @@ export function EditScooter (props) {
     if (props.currentScooter === null) {
         return null;
     }
+
 
     return (
         <div className="modal">
@@ -52,7 +54,7 @@ export function EditScooter (props) {
                         </div>
                         <div className="form-group">
                             <label>Last use time</label>
-                            <input type="datetime-local" className="form-control" value={date} onChange={(e) => {setDate(e.target.value)}}/>
+                            <input type="datetime-local" className="form-control" value={getLocalDate(date || null)} onChange={(e) => {setDate(e.target.value)}}/>
                             <small className="form-text text-muted">Change last use time</small>
                         </div>
                         <div className="form-group">
