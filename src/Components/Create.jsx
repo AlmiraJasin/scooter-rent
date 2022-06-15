@@ -1,7 +1,6 @@
 import randomRegCode from "../Utils/randomRegCode";
 import {insertData} from '../Utils/database';
 
-
 export function CreateNewScooter (props) {
     const generateNewScooter = () => {
         const newId = localStorage.getItem('lastId') || 0
@@ -20,5 +19,3 @@ export function CreateNewScooter (props) {
         </div>
     );
 }
-
-//last built?
