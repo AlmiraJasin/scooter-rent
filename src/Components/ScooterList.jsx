@@ -3,35 +3,56 @@ import { deleteData } from "../Utils/database";
 import { getLastUseTime } from "../Utils/lastUseTime";
 
 const sortTypes = {
-    byId: 'byId',
-    byRun: 'byRun',
-    byDate: 'byDate'
+    byAscId: {
+        key: 'byAscId',
+        fn: (a, b) => a.id - b.id
+    },
+    byDscId: {
+        key: 'byDscId',
+        fn: (a, b) => b.id - a.id
+    },
+    byAscRun: {
+        key: 'byAscRun',
+        fn: (a, b) => a.totalRideKilometres - b.totalRideKilometres
+    },
+    byDscRun: {
+        key: 'byDscRun',
+        fn: (a, b) => b.totalRideKilometres - a.totalRideKilometres
+    },
+    byAscDate: {
+        key: 'byAscDate',
+        fn: (a, b) => new Date(a.lastUseTime) - new Date(b.lastUseTime)
+    },
+    byDscDate: {
+        key: 'byDscDate',
+        fn: (a, b) => new Date(b.lastUseTime) - new Date(a.lastUseTime)
+    }
 }
 
-const sortScooters = (scooters, sortType) => {
-    return scooters.sort((a, b) => {
-        return b.id - a.id;
-    });
-}
+const sortScooters = (scooters, sortType) => scooters.sort(sortTypes[sortType].fn)
 
 export function ScooterList (props) {
-    const [sortType, setSortType] = useState(sortTypes.byId)
-    console.log(sortScooters(props.scooters))
+    const [sortType, setSortType] = useState(sortTypes.byAscId.key)
+    sortScooters(props.scooters, sortType);
     return (
         <div>
-            <div>
-                <button onClick={() => setSortType(sortTypes.byId)}>Sort By ID</button>
-                <button onClick={() => setSortType(sortTypes.byRun)}>Sort By Run</button>
-                <button onClick={() => setSortType(sortTypes.byDate)}>Sort By Date</button>
-            </div>
             <table>
                 <thead>
                 <tr>
-                    <th>{'ID'}</th>
+                    <th>
+                        <button className="btn btn-dark" onClick={() => setSortType(sortType === sortTypes.byAscId.key ? sortTypes.byDscId.key : sortTypes.byAscId.key)}>Sort</button>
+                        {'ID'}
+                    </th>
                     <th>{'Registration Code'}</th>
                     <th>{'Status'}</th>
-                    <th>{'Last used'}</th>
-                    <th>{'Run'}</th>
+                    <th>
+                        <button className="btn btn-dark" onClick={() => setSortType(sortType === sortTypes.byAscDate.key ? sortTypes.byDscDate.key : sortTypes.byAscDate.key)}>Sort</button>
+                        {'Last used'}
+                    </th>
+                    <th>
+                        <button className="btn btn-dark" onClick={() => setSortType(sortType === sortTypes.byAscRun.key ? sortTypes.byDscRun.key : sortTypes.byAscRun.key)}>Sort</button>
+                        {'Run'}
+                    </th>
                     <th>{'Actions'}</th>
                 </tr>
                 </thead>
@@ -41,7 +62,7 @@ export function ScooterList (props) {
                         <tr key={scooter.id}>
                             <td>{scooter.id}</td>
                             <td>{scooter.registrationCode}</td>
-                            <td>{scooter.isBusy}</td>
+                            <td>{scooter.isBusy === 0 ? 'Free' : 'Taken'}</td>
                             <td>{getLastUseTime(scooter.lastUseTime)}</td>
                             <td>{scooter.totalRideKilometres}</td>
                             <td>
@@ -52,8 +73,8 @@ export function ScooterList (props) {
                                 }>Delete</button>
                                 <button className="btn btn-success" onClick={() => props.setShowModal(scooter)}>Edit</button>
                             </td>
-                        </tr>)})
-                }
+                        </tr>)}
+                    )}
                 </tbody>
             </table>
         </div>
