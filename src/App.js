@@ -21,11 +21,14 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <CreateNewScooter refreshList={setLastUpdate}/>
-        <ScooterList refreshList={setLastUpdate} scooters={scooters} setShowModal={setShowModal} />
-        <EditScooter refreshList={setLastUpdate} setShowModal={setShowModal} currentScooter={showModal} />
-        <ScootersStatistics scooters={scooters} />
+        <h1>Scooter Rent</h1> 
       </header>
+      <main className="App-main">
+          <CreateNewScooter refreshList={setLastUpdate}/>
+          <ScootersStatistics scooters={scooters} />
+          <ScooterList refreshList={setLastUpdate} scooters={scooters} setShowModal={setShowModal} />
+          <EditScooter refreshList={setLastUpdate} setShowModal={setShowModal} currentScooter={showModal} />
+      </main>
     </div>
   );
 }

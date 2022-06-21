@@ -15,7 +15,7 @@ export function CreateNewScooter (props) {
     }
     return (
         <div>
-            <button className="btn btn-dark" onClick={generateNewScooter}>Register New Vehicle</button>
+            <button className="create-btn" onClick={generateNewScooter}>Register New Vehicle</button>
         </div>
     );
 }

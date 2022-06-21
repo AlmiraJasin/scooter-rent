@@ -1,33 +1,39 @@
+:root {
+  --dark-grey: #282c34;
+  --light-grey: #4f4d50;
+  --white: #ffffff;
+  --light-blue: #61dafb;
+  --yellow: #d8be47;
+}
 .App {
   text-align: center;
 }
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: var(--dark-grey);
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: var(--text);
 }
-
+.App-main {
+  background-color: var(--light-grey);
+  color: var(--white);
+}
 .App-link {
-  color: #61dafb;
+  color: var(--light-blue);
 }
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -36,8 +42,87 @@
     transform: rotate(360deg);
   }
 }
-
+.scooter-img {
+  /* background-image: url(./Assets/scooter.png);
+  background-repeat: no-repeat;
+  height: 100vh; */
+  position: relative;
+}
+.test {
+  position: absolute;
+  width: 900px;
+    height: auto;
+    right: 260px;
+}
+.table {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 50px;
+  border-collapse: collapse;
+}
+.table td, .table th {
+  padding: 12px 15px;
+  text-align: center;
+  font-size: 16px;
+}
+.table tbody {
+  height: 300px;
+    display: block;
+    overflow: auto;
+}
+table {
+  display: flex;
+  flex-direction: column;
+}
+.table th {
+  background-color: var(--yellow);
+  color: var(--dark-grey);
+}
+.table td {
+  color: var(--white);
+}
+@media(max-width: 500px) {
+  .table {
+    display: block;
+    width: 100%;
+    thead {
+      display: none;
+    }
+    tbody, tr, td {
+      display: block;
+      width: 100%;
+    }
+    tr {
+      margin-bottom: 15%;
+    }
+    td {
+      text-align: right;
+      padding-left: 50%;
+      position: relative;
+    }
+    td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 0;
+      width: 50%;
+      padding-left: 15px;
+      font-size: 15px;
+      font-weight: 700;
+    }
+  }
+}
+h1 {
+  color: var(--white);
+}
 .modal {
   display: block;
   background-color: rgba(0, 0, 0, 0.5);
+}
+.create-btn {
+  background-color: transparent;
+  color: var(--text);
+  border: var(--yellow) solid 3px;
+  border-radius: 5px;
+  padding: 10px 15px;
+  
 }
