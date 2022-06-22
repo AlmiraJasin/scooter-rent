@@ -6,6 +6,7 @@ import { ScooterList } from "./Components/ScooterList";
 import { readData } from "./Utils/database";
 import { EditScooter } from "./Components/EditScooter";
 import { ScootersStatistics } from "./Components/Stats";
+import scooter from './Assets/scooter.png'
 
 function App() {
   const [lastUpdate, setLastUpdate] = useState(Date.now())
@@ -25,7 +26,10 @@ function App() {
       </header>
       <main className="App-main">
           <CreateNewScooter refreshList={setLastUpdate}/>
-          <ScootersStatistics scooters={scooters} />
+          <div className="stats-container">
+            <img src={scooter} className="scooter-img" alt="a" />
+            <ScootersStatistics className="stats" scooters={scooters} />
+          </div>
           <ScooterList refreshList={setLastUpdate} scooters={scooters} setShowModal={setShowModal} />
           <EditScooter refreshList={setLastUpdate} setShowModal={setShowModal} currentScooter={showModal} />
       </main>

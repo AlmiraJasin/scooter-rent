@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { deleteData } from "../Utils/database";
 import { getLastUseTime } from "../Utils/lastUseTime";
-import scooter from '../Assets/scooter.png'
 
 const sortTypes = {
     byAscId: {
@@ -36,8 +35,7 @@ export function ScooterList (props) {
     const [sortType, setSortType] = useState(sortTypes.byAscId.key)
     sortScooters(props.scooters, sortType);
     return (
-        <div className="scooter-img">
-            <img src={scooter} className="test" alt="a" />
+        <div>
             <div  className="table">
                 <table>
                     <thead>

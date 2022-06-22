@@ -28,6 +28,7 @@
   color: var(--text);
 }
 .App-main {
+  height: 100vh;
   background-color: var(--light-grey);
   color: var(--white);
 }
@@ -41,18 +42,6 @@
   to {
     transform: rotate(360deg);
   }
-}
-.scooter-img {
-  /* background-image: url(./Assets/scooter.png);
-  background-repeat: no-repeat;
-  height: 100vh; */
-  position: relative;
-}
-.test {
-  position: absolute;
-  width: 900px;
-    height: auto;
-    right: 260px;
 }
 .table {
   display: flex;
@@ -81,6 +70,21 @@ table {
 .table td {
   color: var(--white);
 }
+.stats-container {
+  display: flex;
+}
+.stats {
+  position: relative;
+  right: 60px;
+}
+.scooter-img {
+  position: absolute;
+  width: 900px;
+  height: auto;
+  right: 260px;
+}
+
+
 @media(max-width: 500px) {
   .table {
     display: block;
